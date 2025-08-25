@@ -1,0 +1,14 @@
+{
+	"id": "infcognan",
+	"name": "Infcognan",
+	"display_name": "Infcognan",
+	"author": ["Gullible"],
+	"description": "Stupid, random ideas I have that could eventually come together.",
+	"prefix": "icn",
+	"main_file": "Infcognan.lua",
+	"priority": 0,
+	"badge_colour": "5b235f",
+	"badge_text_colour": "FFFFFF",
+	"version": "0.0.01",
+	"dependencies": ["Talisman (>=2.2.0a)", "Steamodded (>=1.0.0~BETA-0614a)"]
+}
