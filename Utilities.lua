@@ -16,6 +16,8 @@ INFNAN.C = {
 }
 
 if INFNAN.config.blue_prince_enabled then
+
+    ---@type SMODS.Sticker|table
     INFNAN.util.Border = SMODS.Sticker:extend {
         atlas = ATLASES.BORDERS.key
     }
@@ -80,6 +82,13 @@ function CardArea:align_cards()
     end
 
     if is_sort_different and self == G.jokers then
-        SMODS.calculate_context({pre_shuffle = original_cards})
+        SMODS.calculate_context({pre_align = original_cards})
     end
+end
+
+function INFNAN.furnace()
+    if next(SMODS.find_card('j_icn_furnace')) then
+        return true
+    end
+    return false
 end

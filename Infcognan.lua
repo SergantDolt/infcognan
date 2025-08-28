@@ -49,7 +49,7 @@ if INFNAN.config.blue_prince_enabled then
         'boiler_room',
         'chamber_of_mirrors',
         'freezer',
-        --'furnace'
+        'furnace'
     }
 end
 

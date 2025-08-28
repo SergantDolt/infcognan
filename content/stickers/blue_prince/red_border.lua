@@ -4,7 +4,7 @@ INFNAN.util.Border {
     config = {
         extra = {
             numerator = 1,
-            demoninator = 2,
+            demoninator = 5,
             Xmult = 0.8
         }
     },
@@ -16,17 +16,19 @@ INFNAN.util.Border {
         name = 'Red Room',
         text = {
             '{C:green}#1# in #2#{} chance to give ',
-            '{X:mult,C:white}X0.8{} Mult{} when scoring.'
+            '{X:mult,C:white}X0.8{} Mult{} when {C:attention}scoring{}',
+            'or {C:attention}held in hand{}.'
         }
     },
-    calculate = function (self, card, context)
-        if context.main_scoring and context.cardarea == G.play then
-           local should_hit = SMODS.pseudorandom_probability(card, 'seed', self.config.extra.numerator, self.config.extra.demoninator, 'identifier')
-           if should_hit then
-                return {
-                    xmult = self.config.extra.Xmult
-                }
-           end
+    calculate = function (self, card, context) 
+        if context.main_scoring and (context.cardarea == G.play or context.cardarea == G.hand) then
+            local should_hit = SMODS.pseudorandom_probability(card, 'seed', self.config.extra.numerator, self.config.extra.demoninator, 'identifier')
+            if should_hit then
+                 return {
+                     xmult = self.config.extra.Xmult
+                 }
+            end
         end
     end
 }
+

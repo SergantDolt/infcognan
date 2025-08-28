@@ -55,10 +55,10 @@ SMODS.Joker {
         }
     },
     calculate = function (self, card, context)
-        if context.pre_shuffle then
+        if context.pre_align then
             card.ability.extra.current_direction = 1
             if card.ability.extra.remembered_joker then
-                local remembered_powered = context.pre_shuffle[card.ability.extra.remembered_joker]
+                local remembered_powered = context.pre_align[card.ability.extra.remembered_joker]
                 remembered_powered.ability.extra.steam_powered = false
                 card.ability.extra.remembered_joker = nil
             end
