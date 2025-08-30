@@ -46,10 +46,11 @@ if INFNAN.config.blue_prince_enabled then
         'yellow_border'
     }
     INFNAN.enabled.jokers.blue_prince = {
-        'boiler_room',
+        --'boiler_room',
         'chamber_of_mirrors',
         'freezer',
-        'furnace'
+        'furnace',
+        'draxxus'
     }
 end
 

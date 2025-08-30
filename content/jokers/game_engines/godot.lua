@@ -39,17 +39,7 @@ SMODS.Joker {
     end,
     calculate = function (self, card, context)
         local return_table = {}
-
-        if card.ability.steam_powered then
-            if context.individual and context.other_card.debuff then
-                card.ability.extra.repetitions = card.ability.extra.repetitions + 1
-            end
-
-            if card.ability.extra.repetitions > 1 then
-                return_table.repetitions = card.ability.extra.repetitions
-            end
-        end
-
+        
         if context.joker_main then
             local full_deck = card.ability.extra.full_deck * #G.playing_cards
             local remaining = 1 + (card.ability.extra.remaining_card * #G.deck.cards)

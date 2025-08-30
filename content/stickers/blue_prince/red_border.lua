@@ -20,7 +20,7 @@ INFNAN.util.Border {
             'or {C:attention}held in hand{}.'
         }
     },
-    calculate = function (self, card, context) 
+    calculate = function (self, card, context)
         if context.main_scoring and (context.cardarea == G.play or context.cardarea == G.hand) then
             local should_hit = SMODS.pseudorandom_probability(card, 'seed', self.config.extra.numerator, self.config.extra.demoninator, 'identifier')
             if should_hit then

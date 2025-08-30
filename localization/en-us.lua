@@ -16,6 +16,25 @@ return {
                 steam_text = {
                     'When a scoring card is {C:attention}debuffed{}, trigger this Joker.'
                 }
+            },
+            j_icn_furnace = {
+                name = 'The Furnace',
+                text = {
+                    'After discard, also draw {C:attention}#1#{}',
+                    '{V:1}Red-Bordered{} cards if possible.'
+                },
+                steam_text = {
+                    '{C:attention}Burn{}{V:1}Red-Bordered{} cards if they are scored',
+                    'Earn {C:money}$#2#{} for each burnt card.'
+                }
+            },
+            j_icn_draxxus = {
+                name = 'Draxxus the Dead',
+                text = {
+                    "{C:green}#1# in #2#{} chance to increase {C:attention}all{} odds by {C:green}#3#{}",
+                    "when a {V:1}Red-Bordered{} card is scored.",
+                    "Its {C:green}numerator{} acts as its {X:dark_edition,C:white}^mult{}."
+                }
             }
         },
         Other={
@@ -50,7 +69,9 @@ return {
         suits_plural={},
         suits_singular={},
         tutorial={},
-        v_dictionary={},
+        v_dictionary={
+            a_odds = "+#1# Odds"
+        },
         v_text={},
     },
 }
