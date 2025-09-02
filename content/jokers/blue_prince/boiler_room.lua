@@ -59,7 +59,7 @@ SMODS.Joker {
             card.ability.extra.current_direction = 1
             if card.ability.extra.remembered_joker then
                 local remembered_powered = context.pre_align[card.ability.extra.remembered_joker]
-                remembered_powered.ability.extra.steam_powered = false
+                remembered_powered.ability.steam_powered = false
                 card.ability.extra.remembered_joker = nil
             end
         end
@@ -67,7 +67,7 @@ SMODS.Joker {
             if card.ability.extra.current_direction then
                 local joker_to_depower = get_pointing_joker(card)
                 if joker_to_depower and is_steam_powerable(joker_to_depower) then
-                    joker_to_depower.ability.extra.steam_powered = false
+                    joker_to_depower.ability.steam_powered = false
                 end
 
                 local d = card.ability.extra.current_direction + 1
@@ -78,7 +78,7 @@ SMODS.Joker {
 
                 local joker_to_power = get_pointing_joker(card)
                 if joker_to_power and is_steam_powerable(joker_to_power) then
-                    joker_to_power.ability.extra.steam_powered = true
+                    joker_to_power.ability.steam_powered = true
                     card.ability.extra.remembered_joker = get_position(joker_to_power)
                 end
             end

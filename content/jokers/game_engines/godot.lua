@@ -5,58 +5,59 @@ SMODS.Joker {
     eternal_compat = false,
     steam_compat = true,
     atlas = ATLASES.JOKERS.key,
-    rarity = 2,
-    cost = 5,
+    rarity = 4,
+    cost = 20,
     pos = { x = 0, y = 0 },
     config = {
         extra = {
-            full_deck = 25,
-            held_in_hand = 10,
-            remaining_card = 0.1,
-            filled_slots = 0.01,
-            repetitions = 0
+            e_xchips_mod = 0.1
         }
     },
     loc_vars = function (self, info_queue, card)
-        if card.ability.steam_powered then
-            info_queue[#info_queue+1] = {set = "Other", key = "steam_powered"}
-        end
-
-        local full_deck = card.ability.extra.full_deck * ((G.playing_cards) and #G.playing_cards or 52)
-        local held_in_hand = card.ability.extra.held_in_hand * ((G.hand and G.hand.cards) and #G.hand.cards or 0)
-        local remaining = card.ability.extra.remaining_card * ((G.deck and G.deck.cards) and #G.deck.cards or 52)
-        local filled_slots = 1 + card.ability.extra.filled_slots * (((G.jokers and G.jokers.cards) and (G.consumeables and G.consumeables.cards)) and #G.jokers.cards + #G.consumeables.cards or 0)
+        local key = card.ability.steam_powered and card.config.center.key.."_steam_alt" or card.config.center.key
         return {
+            key = key,
             vars = {
-                card.ability.extra.full_deck,
-                card.ability.extra.remaining_card,
-                card.ability.extra.filled_slots,
-                full_deck + held_in_hand,
-                remaining,
-                filled_slots
+                card.ability.extra.e_xchips_mod
             }
         }
     end,
     calculate = function (self, card, context)
-        local return_table = {}
-        
         if context.joker_main then
-            local full_deck = card.ability.extra.full_deck * #G.playing_cards
-            local remaining = 1 + (card.ability.extra.remaining_card * #G.deck.cards)
-            local filled_slots = 1 + (card.ability.extra.filled_slots * (#G.jokers.cards + #G.consumeables.cards))
+            local e_chips = 1
+            
+            if card.ability.steam_powered then
+                local suit_tallies = {['Spades'] = 0, ['Hearts'] = 0, ['Clubs'] = 0, ['Diamonds'] = 0}
 
-            if (full_deck > 1) then
-                return_table.chips = full_deck
+                for k, v in ipairs(G.playing_cards) do
+                    suit_tallies[v.base.suit] = (suit_tallies[v.base.suit] or 0) + 1
+                end
+                print(suit_tallies)
+
+                local total = suit_tallies['Spades'] + suit_tallies['Hearts'] + suit_tallies['Clubs'] + suit_tallies['Diamonds']
+                e_chips = e_chips + (total * card.ability.extra.e_xchips_mod)
             end
-            if (remaining ~= 1) then
-                return_table.x_chips = remaining
-            end
-            if (filled_slots ~= 1) then
-                return_table.e_chips = filled_slots
-            end
-            if return_table then
-                return return_table
-            end
+
+            local full_deck_size = #G.playing_cards
+            local jokers = #G.jokers.cards
+            local consumables = #G.consumeables.cards
+            local hand_size = #G.hand.cards
+            local total = full_deck_size + jokers + consumables + hand_size
+
+            return {
+                x_chips = total,
+                e_chips = e_chips
+            }
         end
     end
 }
+
+function count_total_suits(suit)
+    local num = 0
+    for i = 1, #G.playing_cards do
+        if G.playing_cards[i].base.suit == suit then
+            num = num + 1
+        end
+    end
+    return num
+end

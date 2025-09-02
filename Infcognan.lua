@@ -10,6 +10,7 @@ INFNAN = {
 }
 SMODS.load_file("config.lua")()
 SMODS.load_file("ConfigTab.lua")()
+SMODS.load_file("hooks.lua")()
 
 INFNAN.config = SMODS.current_mod.config
 
@@ -23,7 +24,9 @@ SMODS.load_file("Utilities.lua")()
 
 
 INFNAN.enabled.jokers.game_engines = {
-    'godot'
+    'godot',
+    'unreal',
+    'unity'
 }
 
 if INFNAN.config.blue_prince_enabled then
@@ -46,7 +49,7 @@ if INFNAN.config.blue_prince_enabled then
         'yellow_border'
     }
     INFNAN.enabled.jokers.blue_prince = {
-        --'boiler_room',
+        'boiler_room',
         'chamber_of_mirrors',
         'freezer',
         'furnace',

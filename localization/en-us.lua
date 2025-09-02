@@ -8,13 +8,44 @@ return {
             j_icn_godot = {
                 name = "Godot",
                 text = {
-                    '{C:chips}+#1# chips{} for each card {C:attention}in full deck{}.',
-                    '{X:chips,C:white}X#2#{} {C:chips}chips{} for each {C:attention}remaining card{}.',
-                    '{X:dark_edition,C:white}^#3#{} {C:chips}chips{} for each {C:attention}filled Joker{} and {C:attention}consumable slot{}.',
-                    '{C:inactive}(Currently {C:chips}+#4# chips{}{C:inactive}, {X:chips,C:white}X#5#{}{C:chips} chips{}{C:inactive}, {X:dark_edition,C:white}^#6#{}{C:chips} chips{}{C:inactive})'
-                },
-                steam_text = {
-                    'When a scoring card is {C:attention}debuffed{}, trigger this Joker.'
+                    'Certain listed {C:attention}caps{} gives their',
+                    'max number as {X:chips,C:white}Xchips{}',
+                    '{C:inactive}(ex: 18/52 -> 52, 3/5 -> 5, 1/2 -> 2){}'
+                }
+            },
+            j_icn_godot_steam_alt = {
+                name = "Godot",
+                text = {
+                    {
+                        'Certain listed {C:attention}caps{} gives their',
+                        'max number as {X:chips,C:white}Xchips{}',
+                        '{C:inactive}(ex: 18/52 -> 52, 3/5 -> 5, 1/2 -> 2){}'
+                    },
+                    {
+                        'Each {C:spades}Spade{} in {C:attention}full deck{} gives {X:dark_edition,C:white}^#1#{} {C:chips}chips{}.',
+                        'Each {C:hearts}Heart{} in {C:attention}full deck{} gives {X:dark_edition,C:white}^#1#{} {C:chips}chips{}.',
+                        'Each {C:clubs}Club{} in {C:attention}full deck{} gives {X:dark_edition,C:white}^#1#{} {C:chips}chips{}.',
+                        'Each {C:diamonds}Diamond{} in {C:attention}full deck{} gives {X:dark_edition,C:white}^#1#{} {C:chips}chips{}.'
+                    }
+                }
+            },
+            j_icn_unreal = {
+                name = "Unreal",
+                text = {
+                    '{C:attention}Removes{} every empty {C:attention}Joker{}',
+                    'and {C:attention}Consumable{} slot. {C:attention}Negative{}',
+                    '{C:attention}Jokers{} count as additional slots.',
+                    'Gain {X:dark_edition,C:white}^#1#{} {C:mult}mult{} for each slot removed.',
+                    '{C:inactive}(Currently {X:dark_edition,C:white}^#2#{} {C:mult}mult{}{C:inactive}.){}'
+                }
+            },
+            j_icn_unity = {
+                name = "Unity",
+                text = {
+                    "Earn {C:attention}#1#%{} of the total {C:money}Interest",
+                    "{C:money}Cap{} when hand is played. If a",
+                    "{C:attention}Ante{} is beaten, take",
+                    "{C:attention}#2#%{} of the current money."
                 }
             },
             j_icn_furnace = {
